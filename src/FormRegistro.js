@@ -40,23 +40,29 @@ class FormRegistro extends Component{
         type: 'password'
       },
     ]
-    }
+  }
 
-    manejarClick(e){
-      e.preventDefault()
-
+  extraerDatos(campo){
+    return {
+      id: campo.id, 
+      valor: document.getElementById(campo.id).value
     }
+  }
 
-    render(){
-      return (
-        <>
-        <form name="registroUsuario">
-          {this.campos.map(c=><Campo id={c.id} label={c.label} type={c.type} placeholder={c.placeholder}/>)}
-          <button type="submit" onClick={this.manejarClick}>Enviar</button>
-        </form>
-        </>
-      )
-    }
+  prepararYEnviar(e){
+    e.preventDefault()
+    let datos = this.campos.map(c=>this.extraerDatos(c))
+    this.props.onEnviado(e,datos)
+  }
+
+  render(){
+    return (
+      <form name="registroUsuario">
+        {this.campos.map(c=><Campo id={c.id} label={c.label} type={c.type} placeholder={c.placeholder}/>)}
+        <button type="submit" onClick={(e)=>this.prepararYEnviar(e)}>Enviar</button>
+      </form>
+    )
+  }
 }
 
 
