@@ -1,4 +1,4 @@
-import React,{Component} from "react"
+import React, { Component } from 'react'
 import Campo from './Campo'
 
 class FormRegistro extends Component{
@@ -43,23 +43,31 @@ class FormRegistro extends Component{
     }
 
     extraerDatos(campo){
-        return {
+        return ({
             id: campo.id,
             valor: document.getElementById(campo.id).value
-        }
+        })
     }
 
     prepararYEnviar(e){
         e.preventDefault()
         let datos = this.campos.map(c=>this.extraerDatos(c))
-        this.props.onEnviado(e,datos)
+        this.props.onEnviado(datos)
     }
 
     render(){
         return (
             <form name="registroUsuario">
-                {this.campos.map(c=><Campo id={c.id} label={c.label} type={c.type} placeholder={c.placeholder}/>)}
-                <button type="submit" onClick={(e)=>this.prepararYEnviar(e)}>Enviar</button>
+                {this.campos.map(c=>
+                    <Campo
+                        key={c.id}
+                        id={c.id}
+                        label={c.label}
+                        type={c.type}
+                        placeholder={c.placeholder}
+                    />
+                )}
+                <button className='button' type="submit" onClick={(e)=>{this.prepararYEnviar(e)}}>Enviar</button>
             </form>
         )
     }

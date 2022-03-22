@@ -8,9 +8,12 @@ class Saludo extends Component{
         const telefono =  datos.find(d=>d.id==="telefono").valor
 
         return(
-          `Hola, ${nombre} ${apellido}, ya estás registrado/a.
-           Te enviaremos un email a ${email} y un mensaje al ${telefono}
-           con la información de tu cuenta.`
+            <>
+                <p>Hola, {nombre} {apellido}, ya estás registrado/a.</p>
+                <p>Te enviaremos un email a {email}</p>
+                <p>y un mensaje al {telefono}</p>
+                <p>con la información de tu cuenta.</p>
+            </>
         )
     }
 
