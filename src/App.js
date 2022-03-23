@@ -16,12 +16,12 @@ class App extends React.Component{
 
     render(){
         return(
-            <div className='columns'>
-                <div className='column is-one-quarter'>
+            <div className='columns is-centered'>
+                <div className='column is-4'>
                     <FormRegistro onEnviado={this.handleFormEnviado.bind(this)} />
                 </div>
-                <div className='column is-8 has-text-weight-bold is-size-3'>
-                        <Saludo mostrar={this.state.formEnviado} datos={this.state.datos}/>
+                <div className='column is-4 is-size-3 has-text-weight-bold'>
+                    <Saludo mostrar={this.state.formEnviado} datos={this.state.datos}/>
                 </div>
             </div>
         )
